@@ -1,6 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: "Geologica", sans-serif;
 
   --color-primary: #fff;
   --color-gray-500: rgba(233, 233, 243, 0.10);
@@ -10,14 +9,11 @@
 
   --br-base: 8px;
   --font-size-lg: 1.375rem; /* 22px */
+  --font-size-xl: 1.875rem; /* 30px */
+  --font-size-2xl: 2.25rem; /* 36px */
 
 
   color: var(--color-primary);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 *{
@@ -31,5 +27,9 @@ body{
   margin: 0 auto;
   background: #0D3C6B;
   background: linear-gradient(90deg,rgba(13, 60, 107, 1) 0%, rgba(35, 126, 184, 1) 100%);
+}
+
+.content{
+  padding-block: 56px;
 }
 

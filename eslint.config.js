@@ -3,7 +3,7 @@ import js from "@eslint/js";
 import vue from "eslint-plugin-vue";
 import vueParser from "vue-eslint-parser";
 import tseslint from "typescript-eslint";
-import globals from "globals";
+// import globals from "globals";
 import eslintConfigPrettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 
@@ -31,7 +31,7 @@ export default [
         sourceType: "module",
         extraFileExtensions: [".vue"],
       },
-      globals: { ...globals.browser, ...globals.es2021 },
+      // globals: { ...globals.browser, ...globals.es2021 },
     },
     rules: {
       "vue/multi-word-component-names": "off", // не ругаться на App.vue
@@ -44,7 +44,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: { ecmaVersion: "latest", sourceType: "module" },
-      globals: { ...globals.browser, ...globals.es2021 },
+      // globals: { ...globals.browser, ...globals.es2021 },
     },
     rules: {
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
