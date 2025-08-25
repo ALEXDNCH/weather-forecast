@@ -1,0 +1,152 @@
+/* RESET STYLE */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+select {
+	/* for Firefox */
+	-moz-appearance: none;
+	/* for Chrome */
+	-webkit-appearance: none;
+	background: transparent;
+	border: none;
+}
+
+select::-ms-expand {
+	/* IE */
+	display: none;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+:focus, :active {
+	outline: none;
+}
+
+a:focus, a:active {
+	outline: none;
+}
+
+nav, footer, header, aside {
+	display: block;
+}
+input, button, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
+	display: none;
+}
+
+input[type="search"]::-ms-clear {
+	display: none;
+}
+
+button, a {
+	cursor: pointer;
+	background: transparent;
+}
+
+button:disabled {
+	cursor: default;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+a, a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+/* RESET HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+}
+
+/* RESET PARAGRAPH */
+p {
+	margin: 0;
+	padding: 0;
+}
+
+/* RESET FORM ELEMENTS */
+textarea {
+	resize: vertical; /* разрешаем только вертикальный ресайз */
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+legend {
+	display: none;
+}
+
+/* RESET QUOTES */
+blockquote, q {
+	quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+	content: '';
+}
+
+/* RESET HR */
+hr {
+	border: none;
+	height: 1px;
+	background-color: #e0e0e0;
+	margin: 0;
+}
