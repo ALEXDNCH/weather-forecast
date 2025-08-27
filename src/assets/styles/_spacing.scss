@@ -1,0 +1,51 @@
+$space-scale: (
+	0: 0,
+	0_5: 2,
+	1: 4,
+	1_5: 6,
+	2: 8,
+	3: 12,
+	4: 16,
+	5: 20,
+	6: 24,
+	8: 32,
+	10: 40,
+	12: 48,
+	16: 64
+);
+
+$boxes: (
+	m: margin,
+	p: padding
+);
+
+$axes: (
+	"": (""),
+	t: ("-top"),
+	r: ("-right"),
+	b: ("-bottom"),
+	l: ("-left"),
+	x: ("-left", "-right"),
+	y: ("-top", "-bottom")
+);
+
+@each $abbr, $prop in $boxes {
+	@each $axis, $suffixes in $axes {
+		@each $k, $px in $space-scale {
+			.#{$abbr}#{$axis}-#{$k} {
+				@if $axis == "" {
+					#{$prop}: #{$px}px;
+				} @else {
+					@each $sfx in $suffixes {
+						#{$prop}#{$sfx}: #{$px}px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}

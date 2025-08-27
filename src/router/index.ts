@@ -11,4 +11,7 @@ export const routes = Object.entries(PAGES).map(([name, page]) => ({
 export const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior() {
+    return { left: 0, top: 0, behavior: "smooth" };
+  },
 });

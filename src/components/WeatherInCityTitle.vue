@@ -14,10 +14,3 @@
 <template>
   <h1 class="title">Погода в городе {{ cityToShow }}</h1>
 </template>
-
-<style lang="scss">
-  .title {
-    font-size: var(--font-size-2xl);
-    font-weight: 600;
-  }
-</style>

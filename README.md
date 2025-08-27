@@ -1,3 +1,16 @@
+## ⚙️ Настройки приложения
+
+Некоторые параметры работы можно менять прямо в коде через константы.
+
+```ts
+// src/constants/config.ts
+export const WEATHER_FORECAST_INTERVAL_HOURS = 3;
+export const WEATHER_REQUEST_DELAY_MS = 3;
+export const WEATHER_FORECAST_DAYS = 7;
+```
+
+
+
 ## 🚀 Start the Project
 
 ### 📦 Install Dependencies

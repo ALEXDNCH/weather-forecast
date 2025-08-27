@@ -1,7 +1,22 @@
+@use "sass:math";
+
+@mixin fluid($prop, $min, $max, $minW: 320px, $maxW: 1360px) {
+	$slope: math.div($max - $min, $maxW - $minW);
+	$intercept: $min - $slope * $minW;
+
+	#{$prop}: clamp(#{$min}, calc(#{$intercept} + #{$slope} * 100vw), #{$max});
+}
+
 @mixin base-btn-padding {
 	padding: 10px 16px;
 }
 
-@mixin transition-base{
+@mixin transition-base {
 	transition: 0.3s all;
+}
+
+@mixin card-shadow {
+	-webkit-box-shadow: 0 0 5px 5px var(--color-gray-400);
+	-moz-box-shadow: 0 0 5px 5px var(--color-gray-400);
+	box-shadow: 0 0 5px 5px var(--color-gray-400);
 }

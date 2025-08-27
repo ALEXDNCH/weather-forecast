@@ -7,5 +7,6 @@ export async function getGeocoding(searchName: string): Promise<IGeoResult | nul
   const response = await axios.get<{ results?: IGeoResult[] }>(
     `${GEOCODING_WEATHER_API_URL}/search?name=${encodeURIComponent(searchName)}`,
   );
+
   return response.data?.results?.[0] ?? null;
 }

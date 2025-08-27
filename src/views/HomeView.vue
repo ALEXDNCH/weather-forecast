@@ -1,30 +1,42 @@
 <script setup lang="ts">
   import { useWeatherStore } from "@/store/weather";
-  import WeatherInCityTitle from "@/components/WeatherInCityTitle.vue";
-  import TodayDateTitle from "@/components/TodayDateTitle.vue";
+  import { computed } from "vue";
+  import { selectToday3hSlots } from "@/utils/day";
+  import WeatherNowCard from "@/components/WeatherNowCard.vue";
+  import WeatherHourlyTable from "@/components/weather/WeatherHourlyTable.vue";
+  import MySkeleton from "@/components/ui/MySkeleton.vue";
 
   const weatherStore = useWeatherStore();
-  const {
-    data: hours,
-    isLoading: hoursLoading,
-    isError: hoursIsError,
-    error: hoursError,
-  } = weatherStore.useWeatherData();
+  const { data, isLoading, isError, error } = weatherStore.useWeatherData();
+  const current = computed(() => data?.value?.current);
+  const hourlyToday = computed(() => (data.value ? selectToday3hSlots(data.value.hourly) : []));
 </script>
 
 <template>
-  <main class="content">
-    <WeatherInCityTitle />
-    <TodayDateTitle />
-    <section v-if="hoursLoading">Загрузка…</section>
-    <section v-else-if="hoursIsError">Ошибка: {{ (hoursError as any)?.message }}</section>
-    <section v-else>
-      Погода в городе {{ weatherStore.cityLabel }}
-      <ul>
-        <li v-for="h in hours?.hourly" :key="h.time.toDateString()">
-          {{ h.time }} — {{ Math.round(h.temperature) }}°C
-        </li>
-      </ul>
-    </section>
-  </main>
+  <div class="mt-12">
+    <MySkeleton v-if="isLoading" rounded="8px" height="60vh" />
+    <template v-else-if="isError">Ошибка: {{ (error as Error).message }}</template>
+    <div v-else-if="current" class="city-weather-forecast__wrapper">
+      <WeatherNowCard
+        :temp="current.temperature"
+        :weather-code="current.weather_code"
+        :humidity="current.humidity"
+        :wind="current.wind_speed"
+      />
+      <WeatherHourlyTable v-if="hourlyToday?.length" :rows="hourlyToday" :tz="data?.tz" />
+    </div>
+  </div>
 </template>
+
+<style lang="scss">
+  .city-weather-forecast__wrapper {
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+    gap: 100px;
+    @media (max-width: 1100px) {
+      flex-direction: column;
+      gap: 50px;
+    }
+  }
+</style>

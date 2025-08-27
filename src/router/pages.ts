@@ -2,13 +2,15 @@ import HomeView from "@/views/HomeView.vue";
 
 export const PAGES = {
   home: {
-    path: "/",
+    name: "home",
+    path: "/:city?",
     label: "Главная",
     component: HomeView,
   },
   weather_weekly: {
-    path: "/weather-weekly",
+    name: "weather_weekly",
+    path: "/:city/weather-weekly",
     label: "Погода на неделю",
-    component: () => import("@/views/WeatherWeekly.vue"),
+    component: () => import("@/views/WeatherWeeklyView.vue"),
   },
 } as const;

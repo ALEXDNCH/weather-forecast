@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import Header from "@/components/layout/Header.vue";
+  import DefaultLayout from "@/layouts/defaultLayout.vue";
 </script>
 
 <template>
-  <Header />
-  <RouterView />
+  <DefaultLayout>
+    <RouterView />
+  </DefaultLayout>
 </template>

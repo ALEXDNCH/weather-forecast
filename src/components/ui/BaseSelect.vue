@@ -2,7 +2,8 @@
   import { computed, ref, watch } from "vue";
   import { useDropdown } from "@/composables/useDropdown";
   import Arrow from "@/assets/images/arrow.svg?component";
-  import type { TOption } from "@/constants";
+  import type { FavoriteCityValue, TOption } from "@/constants";
+  import { useCityParam } from "@/composables/useCityParam"; // ← добавили
 
   const props = defineProps<{
     modelValue: string;
@@ -24,8 +25,11 @@
 
   const { open, rootEl, toggle, select } = useDropdown<string>({ model });
 
-  function onSelect(v: string) {
+  const { setCityAndNavigate } = useCityParam();
+
+  function handleSelect(v: FavoriteCityValue) {
     select(v);
+    setCityAndNavigate(v);
   }
 </script>
 
@@ -50,7 +54,7 @@
         role="option"
         :aria-selected="o.value === model"
         :class="{ 'sel__option--selected': o.value === model }"
-        @click="onSelect(o.value)"
+        @click="handleSelect(o.value)"
       >
         <slot name="option" :option="o">{{ o.label }}</slot>
       </li>
@@ -63,8 +67,7 @@
 
   .sel {
     position: relative;
-    width: 320px;
-
+    min-width: 250px;
     &--open .sel__chevron {
       transform: rotate(0);
     }
@@ -81,7 +84,7 @@
     border-radius: var(--br-base);
     cursor: pointer;
     font-weight: 500;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-sm);
   }
 
   .sel__chevron {
@@ -108,7 +111,7 @@
     @include m.base-btn-padding;
     color: var(--color-primary);
     font-weight: 500;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-sm);
     cursor: pointer;
 
     &:hover {

@@ -1,4 +1,4 @@
-export type TOption = { value: string; label: string };
+type BaseOption = { value: string; label: string };
 
 export const FAVORITE_CITIES = [
   { value: "Moscow", label: "Москва" },
@@ -7,7 +7,11 @@ export const FAVORITE_CITIES = [
   { value: "Ufa", label: "Уфа" },
   { value: "Novosibirsk", label: "Новосибирск" },
   { value: "Krasnoyarsk", label: "Красноярск" },
-] as const satisfies readonly TOption[];
+  { value: "Seoul", label: "Сеул" },
+] as const satisfies readonly BaseOption[];
 
-export type FavoriteCityValue = (typeof FAVORITE_CITIES)[number]["value"];
-export type FavoriteCityLabel = (typeof FAVORITE_CITIES)[number]["label"];
+export type FavoriteCityOption = (typeof FAVORITE_CITIES)[number];
+export type FavoriteCityValue = FavoriteCityOption["value"];
+export type FavoriteCityLabel = FavoriteCityOption["label"];
+
+export type TOption = FavoriteCityOption;
